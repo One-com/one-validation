@@ -2,16 +2,16 @@
     "author": "Peter Müller <munter@fumle.dk> (http://fumle.dk)",
     "name": "one-validation",
     "description": "Regexp based validation collection for common internet validation tasks",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "repository": {
-        "url": ""
+        "url": "git://github.com/One-com/one-validation.git"
     },
     "engines": {
         "node": ">=0.4.0"
     },
     "dependencies": {},
     "devDependencies": {
-        "uglify-js": ">=1.2.0",
-        "punycode": ">=0.2.0"
+        "punycode": ">=0.2.0",
+        "uglify-js": ">=1.2.0"
     }
 }
