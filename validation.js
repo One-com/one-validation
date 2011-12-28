@@ -30,9 +30,11 @@
     for (name in fragments) {
         if (fragments.hasOwnProperty(name)) {
             validation[name] = new RegExp("^" + fragments[name].source + "$", "i");
-            validation.functions[name] = function (value) {
-                return validation[name].test(value);
-            };
+            validation.functions[name] = (function (name) {
+                return function (value) {
+                    return validation[name].test(value);
+                };
+            }(name));
         }
     }
 
