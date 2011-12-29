@@ -1,5 +1,14 @@
 {
-    "author": "Peter Müller <munter@fumle.dk> (http://fumle.dk)",
+    "maintainers" [
+        {
+            "name": "Peter Müller",
+            "email": "munter@fumle.dk"
+        },
+        {
+            "name": "Andreas Lind Petersen",
+            "email": "andreas@one.com"
+        }
+    ],
     "name": "one-validation",
     "description": "Regexp based validation collection for common internet validation tasks",
     "version": "0.2.3",
