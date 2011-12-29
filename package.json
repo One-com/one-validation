@@ -12,10 +12,11 @@
     "dependencies": {},
     "devDependencies": {
         "punycode": ">=0.2.0",
-        "uglify-js": ">=1.2.0"
+        "uglify-js": ">=1.2.0",
+        "vows": "=0.6.1"
     },
     "scripts": {
-        "prepublish": "node lib/tld.js; make"
+        "prepublish": "node lib/tld.js; make; vows"
     },
     "main": "./validation.js"
 }
