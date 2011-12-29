@@ -4,6 +4,23 @@
 (function () {
     "use strict";
 
+    // Poor man's /x flag:
+    // new RegExp(concatRegExps(
+    //    /blabla/,
+    //    /blablabla/
+    // ), "i").test(string);
+    function concatRegExps() { // ...
+        var source = '';
+        for (var i = 0 ; i < arguments.length ; i += 1) {
+            if (Object.prototype.toString.call(arguments[i]) === '[object RegExp]') {
+                source += arguments[i].source;
+            } else {
+                source += arguments[i];
+            }
+        }
+        return source;
+    }
+
     var name,
         validation = {
             functions: {}
@@ -16,15 +33,33 @@
             user: /[^:@\/]+/i,
             password: /[^:@\/]+?/i,
             scheme: /(?:ftp|https?|tel|sms)/i,
-            path: /(?:\/[^ ]*)*/i
+            pathname: /[\w%+@*\-\.\/\(\)]*/i,
+            search: /[\w%+@*\-\.\/\(\)\?&=;]*/,
+            hash: /[\w%+@*\-\.\/\(\)\?#&=;]*/
         };
 
     // Highlevel regexes composed of regex fragments
     fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
     fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
-    fragments.url = new RegExp(fragments.scheme.source + "://(?:" + fragments.user.source + "(?::" + fragments.password.source + ")?@)?" + fragments.subdomain.source + "(?::" + fragments.port.source + ")?(?:" + fragments.path.source + ")?", "i"); // See http://www.ietf.org/rfc/rfc1738.txt
+    fragments.url = new RegExp(fragments.scheme.source + "://(?:" + fragments.user.source + "(?::" + fragments.password.source + ")?@)?" + fragments.subdomain.source + "(?::" + fragments.port.source + ")?(?:" + fragments.pathname.source + "(?:" + fragments.search.source + ")?(?:" + fragments.hash.source + ")?)?", "i"); // See http://www.ietf.org/rfc/rfc1738.txt
     fragments.mailto = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
+
+    fragments.url = new RegExp(concatRegExps(
+        fragments.scheme, "://",
+        "(?:",
+            fragments.user,
+            "(?::",
+                fragments.password,
+            ")?@",
+        ")?",
+        fragments.subdomain,
+        "(?::", fragments.port, ")?",
+        "(?:/", fragments.pathname,
+            "(?:\\?", fragments.search, ")?",
+            "(?:#", fragments.hash, ")?",
+        ")?" // See http://www.ietf.org/rfc/rfc1738.txt
+    ), "i");
 
     // Add convenience regexes and functions
     for (name in fragments) {
