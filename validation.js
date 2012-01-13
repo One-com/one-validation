@@ -42,7 +42,6 @@
     fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
     fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
-    fragments.url = new RegExp(fragments.scheme.source + "://(?:" + fragments.user.source + "(?::" + fragments.password.source + ")?@)?" + fragments.subdomain.source + "(?::" + fragments.port.source + ")?(?:" + fragments.pathname.source + "(?:" + fragments.search.source + ")?(?:" + fragments.hash.source + ")?)?", "i"); // See http://www.ietf.org/rfc/rfc1738.txt
     fragments.mailto = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
 
     // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
