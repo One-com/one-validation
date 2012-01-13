@@ -32,8 +32,7 @@
             localpart: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+)*/i, // taken from: http://www.regular-expressions.info/email.html
             user: /[^:@\/]+/i,
             password: /[^:@\/]+?/i,
-            scheme: /(?:ftp|https?|tel|sms)/i,
-            pathname: /[\w%+@*\-\.\/\(\)]*/i,
+            pathname: /[\w%+@*\-\.\/\(\)]*/,
             search: /[\w%+@*\-\.\/\(\)\?&=;]*/,
             hash: /[\w%+@*\-\.\/\(\)\?#&=;]*/
         };
@@ -44,22 +43,30 @@
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
     fragments.mailto = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
 
-    // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
-    fragments.url = new RegExp(concatRegExps(
-        fragments.scheme, "://",
-        "(?:",
-            fragments.user,
-            "(?::",
-                fragments.password,
-            ")?@",
-        ")?",
-        fragments.subdomain,
-        "(?::", fragments.port, ")?",
-        "(?:/", fragments.pathname,
-            "(?:\\?", fragments.search, ")?",
-            "(?:#", fragments.hash, ")?",
-        ")?" // See http://www.ietf.org/rfc/rfc1738.txt
-    ), "i");
+    function createHttpishUrlRegExp(schemeRegExp) {
+        // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
+        return new RegExp(concatRegExps(
+            schemeRegExp, "://",
+            "(?:",
+                fragments.user,
+                "(?::",
+                    fragments.password,
+                ")?@",
+            ")?",
+            fragments.subdomain,
+            "(?::", fragments.port, ")?",
+            "(?:/", fragments.pathname,
+                "(?:\\?", fragments.search, ")?",
+                "(?:#", fragments.hash, ")?",
+            ")?" // See http://www.ietf.org/rfc/rfc1738.txt
+        ), "i");
+    }
+
+    fragments.httpUrl = createHttpishUrlRegExp(/https?/);
+    fragments.ftpUrl = createHttpishUrlRegExp(/ftp/);
+
+    // Alias 'httpUrl' as 'url' for backwards compatibility:
+    fragments.url = fragments.httpUrl;
 
     // Add convenience regexes and functions
     for (name in fragments) {
