@@ -42,7 +42,7 @@
     fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
     fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
-    fragments.mailto = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
+    fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
 
     function createHttpishUrlRegExp(schemeRegExp) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
