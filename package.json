@@ -27,5 +27,8 @@
     "scripts": {
         "prepublish": "node lib/tld.js; make; vows"
     },
+    "publishConfig": {
+        "repository": "http://registry.npmjs.org/"
+    },
     "main": "./validation.js"
 }
