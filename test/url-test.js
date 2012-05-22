@@ -28,7 +28,7 @@ vows
         'http://www.foo.com/',
         'http://www.foo.com/?',
         'http://www.foo.com/?#',
-        
+        'http://example.com/foo/bar&something=blah',
         'http://foo.com/blah_blah',
         'http://foo.com/blah_blah/',
         'http://foo.com/blah_blah_(wikipedia)',
