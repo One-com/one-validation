@@ -21,7 +21,7 @@
         return source;
     }
 
-    var name,
+    var ipv4DigitRegExpSource = /([0-9]|1?[0-9][0-9]|2[0-4][0-9]|25[0-5])/.source,
         validation = {
             functions: {}
         },
@@ -37,8 +37,13 @@
             password: /[^@\/]+?/i,
             pathname: /[\w%+@*\-\.\/\(\)&=;]*/,
             search:   /[\w%+@*\-\.\/\(\)&=;\?]*/,
-            hash:     /[\w%+@*\-\.\/\(\)&=;\?#]*/
-        };
+            hash:     /[\w%+@*\-\.\/\(\)&=;\?#]*/,
+            ipv4: new RegExp(ipv4DigitRegExpSource + '\\.' +
+                             ipv4DigitRegExpSource + '\\.' +
+                             ipv4DigitRegExpSource + '\\.' +
+                             ipv4DigitRegExpSource)
+        },
+        name;
 
     // Highlevel regexes composed of regex fragments
     fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
@@ -56,7 +61,11 @@
                     fragments.password,
                 ")?@",
             ")?",
-            fragments.subdomain,
+            "(?:",
+                fragments.subdomain,
+                "|",
+                fragments.ipv4,
+            ")",
             "(?::", fragments.port, ")?",
             "(?:/", fragments.pathname,
                 "(?:\\?", fragments.search, ")?",

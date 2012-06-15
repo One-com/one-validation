@@ -51,7 +51,7 @@ vows
         'http://foo.com/?q=Test%20URL-encoded%20stuff',
         'http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com',
         'http://1337.net',
-        'http://a.b-c.de'
+        'http://a.b-c.de',
 /*
         // Unicode in url?
         'http://✪df.ws/123',
@@ -64,17 +64,15 @@ vows
         'http://例子.测试',
         'http://उदाहरण.परीक्षा',
 */
-/*
         // IP addresses for hostnames
         'http://142.42.1.1/',
         'http://142.42.1.1:8080/',
         'http://223.255.255.254'
-*/
     ]))
     .addBatch(createBatch('url', false, [
         'http://www.foo.cq/',
-        '@.foo.com/?'
+        '@.foo.com/?',
+        'http://1.1.256.1',
+        'http://1.1.1.300'
     ]))
 ['export'](module);
-
-
