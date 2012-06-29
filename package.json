@@ -25,7 +25,9 @@
         "vows": "=0.6.1"
     },
     "scripts": {
-        "prepublish": "make && vows"
+        "pretest": "npm install && make",
+        "test": "vows",
+        "prepublish": "npm test"
     },
     "publishConfig": {
         "repository": "http://registry.npmjs.org/"

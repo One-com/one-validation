@@ -1,5 +1,4 @@
-/*global module, window*/
-/*jslint regexp:false*/
+/*global module, window, define*/
 
 (function () {
     "use strict";
@@ -26,7 +25,7 @@
             functions: {}
         },
         fragments = {
-            tld: __TLD_REGEX__, // See /lib/tld.js
+            tld: "__TLD_REGEX__", // See /lib/tld.js
             domainPart: /[a-z0-9](?:[\-a-z0-9]*[a-z0-9])?/i,
             port: /\d{1,5}/,
             localpart: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+)*/i, // taken from: http://www.regular-expressions.info/email.html
@@ -95,14 +94,20 @@
     // Expose regex fragments for matching inside larger texts
     validation.fragments = fragments;
 
-    // Browser
-    if (typeof window !== 'undefined') {
-        window.one = window.one || {};
-        window.one.validation = validation;
-    }
-
-    // CommonJS
+    // CommonJS module
     if (typeof module !== 'undefined') {
         module.exports = validation;
+    } else {
+        // Assume browser
+        if (typeof define === 'function') {
+            // Assume require.js, expose AMD module
+            define([], function () {
+                return validation;
+            });
+        } else {
+            window.one = window.one || {};
+            window.one.validation = validation;
+        }
     }
+
 }());
