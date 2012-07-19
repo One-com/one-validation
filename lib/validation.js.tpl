@@ -37,10 +37,7 @@
             pathname: /[\w%+@*\-\.\/\(\)&=;]*/,
             search:   /[\w%+@*\-\.\/\(\)&=;\?]*/,
             hash:     /[\w%+@*\-\.\/\(\)&=;\?#]*/,
-            ipv4: new RegExp(ipv4DigitRegExpSource + '\\.' +
-                             ipv4DigitRegExpSource + '\\.' +
-                             ipv4DigitRegExpSource + '\\.' +
-                             ipv4DigitRegExpSource)
+            ipv4: new RegExp('(?:' + ipv4DigitRegExpSource + '\\.){3}' + ipv4DigitRegExpSource)
         },
         name;
 
