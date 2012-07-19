@@ -50,6 +50,14 @@
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
 
+    // Same as location.pathname + location.search + location.hash in the browser:
+    fragments.pathnameSearchHash = new RegExp(concatRegExps(
+        "(?:/", fragments.pathname,
+            "(?:\\?", fragments.search, ")?",
+            "(?:#", fragments.hash, ")?",
+        ")?" // See http://www.ietf.org/rfc/rfc1738.txt
+    ));
+
     function createHttpishUrlRegExp(schemeRegExp) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
         return new RegExp(concatRegExps(
@@ -66,10 +74,7 @@
                 fragments.ipv4,
             ")",
             "(?::", fragments.port, ")?",
-            "(?:/", fragments.pathname,
-                "(?:\\?", fragments.search, ")?",
-                "(?:#", fragments.hash, ")?",
-            ")?" // See http://www.ietf.org/rfc/rfc1738.txt
+            fragments.pathnameSearchHash
         ), "i");
     }
 
