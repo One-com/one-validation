@@ -26,6 +26,7 @@ vows
     .describe('url validation')
     .addBatch(createBatch('url', true, [
         'http://www.foo.com/',
+        'http://www.foo.com/~username/',
         'http://www.foo.com/?',
         'http://www.foo.com/?#',
         'http://example.com/foo/bar&something=blah',
