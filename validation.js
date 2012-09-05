@@ -35,9 +35,9 @@
             lowerCaseUuid: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/,
             upperCaseUuid: /[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}/,
             password: /[^@\/]+?/i,
-            pathname: /[\w%+@*\-\.\/\(\)&=;]*/,
-            search:   /[\w%+@*\-\.\/\(\)&=;\?]*/,
-            hash:     /[\w%+@*\-\.\/\(\)&=;\?#]*/,
+            pathname: /[\w%+@*\-\.\/\(\)&=;~]*/,
+            search:   /[\w%+@*\-\.\/\(\)&=;\?~]*/,
+            hash:     /[\w%+@*\-\.\/\(\)&=;\?#~]*/,
             ipv4: new RegExp('(?:' + ipv4DigitRegExpSource + '\\.){3}' + ipv4DigitRegExpSource)
         },
         name;
