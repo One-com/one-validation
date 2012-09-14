@@ -9,6 +9,10 @@ The library includes a TLD whitelist that can be updated using make.
 
 This module works as a NodeJS CommonJS module, a require.js AMD module and falls back to exposing itself in the global scope on `one.validation` if included directly in the page.
 
+Package managers:
+* npm: `npm install one-validation`
+* bower: `bower install validation`
+
 Supported patterns
 ==================
 * domain
