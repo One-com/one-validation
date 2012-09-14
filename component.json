@@ -1,0 +1,10 @@
+{
+	"name": "validation",
+	"version": "0.2.15",
+	"main": [
+		"validation.min.js",
+		"validation-ExtJS.min.js"
+	],
+	"dependencies": {
+	}
+}
