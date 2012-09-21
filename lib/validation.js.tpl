@@ -1,6 +1,15 @@
 /*global module, window, define*/
 
-(function () {
+(function (root, factory) {
+    if (typeof exports === 'object') {
+        module.exports = factory();
+    } else if (typeof define === 'function' && define.amd) {
+        define(factory);
+    } else {
+        root.one = root.one || {};
+        root.one.validation = factory();
+    }
+}(this, function () {
     "use strict";
 
     // Poor man's /x flag:
@@ -9,8 +18,9 @@
     //    /blablabla/
     // ), "i").test(string);
     function concatRegExps() { // ...
-        var source = '';
-        for (var i = 0 ; i < arguments.length ; i += 1) {
+        var source = '',
+        i = 0;
+        for (; i < arguments.length; i += 1) {
             if (Object.prototype.toString.call(arguments[i]) === '[object RegExp]') {
                 source += arguments[i].source;
             } else {
@@ -96,20 +106,5 @@
     // Expose regex fragments for matching inside larger texts
     validation.fragments = fragments;
 
-    // CommonJS module
-    if (typeof module !== 'undefined') {
-        module.exports = validation;
-    } else {
-        // Assume browser
-        if (typeof define === 'function') {
-            // Assume require.js, expose AMD module
-            define([], function () {
-                return validation;
-            });
-        } else {
-            window.one = window.one || {};
-            window.one.validation = validation;
-        }
-    }
-
-}());
+    return validation;
+}));
