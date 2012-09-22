@@ -53,6 +53,7 @@ vows
         'http://-.~_!$&\'()*+,;=:%40:80%2f::::::@example.com',
         'http://1337.net',
         'http://a.b-c.de',
+        'http://www.hitta.se/karta#tool=coordinate&vkid=dWR_Xnqbbk&center=6411726:1290882&zl=9&type=map&bounds=6411510:1290540,6411943:1291224',
 /*
         // Unicode in url?
         'http://✪df.ws/123',
