@@ -55,8 +55,11 @@
     // Highlevel regexes composed of regex fragments
     fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
     fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
+    fragments.subdomainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPart.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
+    fragments.emailRelaxed = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxed.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
+    fragments.mailtoUrlRelaxed = new RegExp("mailto:" + fragments.emailRelaxed.source, "i"); // TODO: This needs to be improved
 
     // Same as location.pathname + location.search + location.hash in the browser:
     fragments.pathnameSearchHash = new RegExp(concatRegExps(
@@ -66,7 +69,7 @@
         ")?" // See http://www.ietf.org/rfc/rfc1738.txt
     ));
 
-    function createHttpishUrlRegExp(schemeRegExp) {
+    function createHttpishUrlRegExp(schemeRegExp, isRelaxed) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
         return new RegExp(concatRegExps(
             schemeRegExp, "://",
@@ -77,7 +80,7 @@
                 ")?@",
             ")?",
             "(?:",
-                fragments.subdomain,
+                isRelaxed ? fragments.subdomainRelaxed : fragments.subdomain,
                 "|",
                 fragments.ipv4,
             ")",
@@ -87,7 +90,9 @@
     }
 
     fragments.httpUrl = createHttpishUrlRegExp(/https?/);
+    fragments.httpUrlRelaxed = createHttpishUrlRegExp(/https?/, true);
     fragments.ftpUrl = createHttpishUrlRegExp(/ftp/);
+    fragments.ftpUrlRelaxed = createHttpishUrlRegExp(/ftp/, true);
 
     // Alias 'httpUrl' as 'url' for backwards compatibility:
     fragments.url = fragments.httpUrl;
