@@ -36,6 +36,7 @@
             functions: {}
         },
         fragments = {
+            visibleChar: /[A-Za-zªµºÀ-ÖØ-öø-ˁˆ-ˑˠ-ˤˬˮͰ-ʹͶͷͺ-ͽΆΈ-ΊΌΎ-ΡΣ-ϵϷ-ҁҊ-ԥԱ-Ֆՙա-ևא-תװ-ײء-يٮٯٱ-ۓەۥۦۮۯۺ-ۼۿܐܒ-ܯݍ-ޥޱߊ-ߪߴߵߺࠀ-ࠕࠚࠤࠨऄ-हऽॐक़-ॡॱॲॹ-ॿঅ-ঌএঐও-নপ-রলশ-হঽৎড়ঢ়য়-ৡৰৱਅ-ਊਏਐਓ-ਨਪ-ਰਲਲ਼ਵਸ਼ਸਹਖ਼-ੜਫ਼ੲ-ੴઅ-ઍએ-ઑઓ-નપ-રલળવ-હઽૐૠૡଅ-ଌଏଐଓ-ନପ-ରଲଳଵ-ହଽଡ଼ଢ଼ୟ-ୡୱஃஅ-ஊஎ-ஐஒ-கஙசஜஞடணதந-பம-ஹௐఅ-ఌఎ-ఐఒ-నప-ళవ-హఽౘౙౠౡಅ-ಌಎ-ಐಒ-ನಪ-ಳವ-ಹಽೞೠೡഅ-ഌഎ-ഐഒ-നപ-ഹഽൠൡൺ-ൿඅ-ඖක-නඳ-රලව-ෆก-ะาำเ-ๆກຂຄງຈຊຍດ-ທນ-ຟມ-ຣລວສຫອ-ະາຳຽເ-ໄໆໜໝༀཀ-ཇཉ-ཬྈ-ྋက-ဪဿၐ-ၕၚ-ၝၡၥၦၮ-ၰၵ-ႁႎႠ-Ⴥა-ჺჼᄀ-ቈቊ-ቍቐ-ቖቘቚ-ቝበ-ኈኊ-ኍነ-ኰኲ-ኵኸ-ኾዀዂ-ዅወ-ዖዘ-ጐጒ-ጕጘ-ፚᎀ-ᎏᎠ-Ᏼᐁ-ᙬᙯ-ᙿᚁ-ᚚᚠ-ᛪᜀ-ᜌᜎ-ᜑᜠ-ᜱᝀ-ᝑᝠ-ᝬᝮ-ᝰក-ឳៗៜᠠ-ᡷᢀ-ᢨᢪᢰ-ᣵᤀ-ᤜᥐ-ᥭᥰ-ᥴᦀ-ᦫᧁ-ᧇᨀ-ᨖᨠ-ᩔᪧᬅ-ᬳᭅ-ᭋᮃ-ᮠᮮᮯᰀ-ᰣᱍ-ᱏᱚ-ᱽᳩ-ᳬᳮ-ᳱᴀ-ᶿḀ-ἕἘ-Ἕἠ-ὅὈ-Ὅὐ-ὗὙὛὝὟ-ώᾀ-ᾴᾶ-ᾼιῂ-ῄῆ-ῌῐ-ΐῖ-Ίῠ-Ῥῲ-ῴῶ-ῼⁱⁿₐ-ₔℂℇℊ-ℓℕℙ-ℝℤΩℨK-ℭℯ-ℹℼ-ℿⅅ-ⅉⅎↃↄⰀ-Ⱞⰰ-ⱞⱠ-ⳤⳫ-ⳮⴀ-ⴥⴰ-ⵥⵯⶀ-ⶖⶠ-ⶦⶨ-ⶮⶰ-ⶶⶸ-ⶾⷀ-ⷆⷈ-ⷎⷐ-ⷖⷘ-ⷞⸯ々〆〱-〵〻〼ぁ-ゖゝ-ゟァ-ヺー-ヿㄅ-ㄭㄱ-ㆎㆠ-ㆷㇰ-ㇿ㐀-䶵一-鿋ꀀ-ꒌꓐ-ꓽꔀ-ꘌꘐ-ꘟꘪꘫꙀ-ꙟꙢ-ꙮꙿ-ꚗꚠ-ꛥꜗ-ꜟꜢ-ꞈꞋꞌꟻ-ꠁꠃ-ꠅꠇ-ꠊꠌ-ꠢꡀ-ꡳꢂ-ꢳꣲ-ꣷꣻꤊ-ꤥꤰ-ꥆꥠ-ꥼꦄ-ꦲꧏꨀ-ꨨꩀ-ꩂꩄ-ꩋꩠ-ꩶꩺꪀ-ꪯꪱꪵꪶꪹ-ꪽꫀꫂꫛ-ꫝꯀ-ꯢ가-힣ힰ-ퟆퟋ-ퟻ豈-鶴侮-舘並-龎ﬀ-ﬆﬓ-ﬗיִײַ-ﬨשׁ-זּטּ-לּמּנּסּףּפּצּ-ﮱﯓ-ﴽﵐ-ﶏﶒ-ﷇﷰ-ﷻﹰ-ﹴﹶ-ﻼＡ-Ｚａ-ｚｦ-ﾾￂ-ￇￊ-ￏￒ-ￗￚ-ￜ̀-ͯ҃-҉֑-ׇֽֿׁׂׅׄؐ-ًؚ-ٰٞۖ-ۜ۞-۪ۤۧۨ-ܑۭܰ-݊ަ-ް߫-߳ࠖ-࠙ࠛ-ࠣࠥ-ࠧࠩ-࠭ऀ-ः़ा-ॎ॑-ॕॢॣঁ-ঃ়া-ৄেৈো-্ৗৢৣਁ-ਃ਼ਾ-ੂੇੈੋ-੍ੑੰੱੵઁ-ઃ઼ા-ૅે-ૉો-્ૢૣଁ-ଃ଼ା-ୄେୈୋ-୍ୖୗୢୣஂா-ூெ-ைொ-்ௗఁ-ఃా-ౄె-ైొ-్ౕౖౢౣಂಃ಼ಾ-ೄೆ-ೈೊ-್ೕೖೢೣംഃാ-ൄെ-ൈൊ-്ൗൢൣංඃ්ා-ුූෘ-ෟෲෳัิ-ฺ็-๎ັິ-ູົຼ່-ໍ༹༘༙༵༷༾༿ཱ-྄྆྇ྐ-ྗྙ-ྼ࿆ါ-ှၖ-ၙၞ-ၠၢ-ၤၧ-ၭၱ-ၴႂ-ႍႏႚ-ႝ፟ᜒ-᜔ᜲ-᜴ᝒᝓᝲᝳា-៓៝᠋-᠍ᢩᤠ-ᤫᤰ-᤻ᦰ-ᧀᧈᧉᨗ-ᨛᩕ-ᩞ᩠-᩿᩼ᬀ-ᬄ᬴-᭄᭫-᭳ᮀ-ᮂᮡ-᮪ᰤ-᰷᳐-᳔᳒-᳨᳭ᳲ᷀-᷽ᷦ-᷿⃐-⃰⳯-⳱ⷠ-〪ⷿ-゙゚〯꙯-꙲꙼꙽꛰꛱ꠂ꠆ꠋꠣ-ꠧꢀꢁꢴ-꣄꣠-꣱ꤦ-꤭ꥇ-꥓ꦀ-ꦃ꦳-꧀ꨩ-ꨶꩃꩌꩍꩻꪰꪲ-ꪴꪷꪸꪾ꪿꫁ꯣ-ꯪ꯬꯭ﬞ︀-️︠-︦0-9²³¹¼-¾٠-٩۰-۹߀-߉०-९০-৯৴-৹੦-੯૦-૯୦-୯௦-௲౦-౯౸-౾೦-೯൦-൵๐-๙໐-໙༠-༳၀-၉႐-႙፩-፼ᛮ-ᛰ០-៩៰-៹᠐-᠙᥆-᥏᧐-᧚᪀-᪉᪐-᪙᭐-᭙᮰-᮹᱀-᱉᱐-᱙⁰⁴-⁹₀-₉⅐-ↂↅ-↉①-⒛⓪-⓿❶-➓⳽〇〡-〩〸-〺㆒-㆕㈠-㈩㉑-㉟㊀-㊉㊱-㊿꘠-꘩ꛦ-ꛯ꠰-꠵꣐-꣙꤀-꤉꧐-꧙꩐-꩙꯰-꯹０-９!-#%-\*,-\/:;?@\[-\]_\{\}¡«·»¿;·՚-՟։֊־׀׃׆׳״؉؊،؍؛؞؟٪-٭۔܀-܍߷-߹࠰-࠾।॥॰෴๏๚๛༄-༒༺-༽྅࿐-࿔၊-၏჻፡-፨᐀᙭᙮᚛᚜᛫-᛭᜵᜶។-៖៘-៚᠀-᠊᥄᥅᧞᧟᨞᨟᪠-᪦᪨-᪭᭚-᭠᰻-᰿᱾᱿᳓‐-‧‰-⁃⁅-⁑⁓-⁞⁽⁾₍₎〈〉❨-❵⟅⟆⟦-⟯⦃-⦘⧘-⧛⧼⧽⳹-⳼⳾⳿⸀-⸮⸰⸱、-〃〈-】〔-〟〰〽゠・꓾꓿꘍-꘏꙳꙾꛲-꛷꡴-꡷꣎꣏꣸-꣺꤮꤯꥟꧁-꧍꧞꧟꩜-꩟꫞꫟꯫﴾﴿︐-︙︰-﹒﹔-﹡﹣﹨﹪﹫！-＃％-＊，-／：；？＠［-］＿｛｝｟-･\$\+<->\^`|~¢-©¬®-±´¶¸×÷˂-˅˒-˟˥-˫˭˯-˿͵΄΅϶҂؆-؈؋؎؏۩۽۾߶৲৳৺৻૱୰௳-௺౿ೱೲ൹฿༁-༃༓-༗༚-༟༴༶༸྾-࿅࿇-࿌࿎࿏࿕-࿘႞႟፠᎐-᎙៛᥀᧠-᧿᭡-᭪᭴-᭼᾽᾿-῁῍-῏῝-῟῭-`´῾⁄⁒⁺-⁼₊-₌₠-₸℀℁℃-℆℈℉℔№-℘℞-℣℥℧℩℮℺℻⅀-⅄⅊-⅍⅏←-⌨⌫-⏨␀-␦⑀-⑊⒜-ⓩ─-⛍⛏-⛡⛣⛨-⛿✁-✄✆-✉✌-✧✩-❋❍❏-❒❖-❞❡-❧➔➘-➯➱-➾⟀-⟄⟇-⟊⟌⟐-⟥⟰-⦂⦙-⧗⧜-⧻⧾-⭌⭐-⭙⳥-⳪⺀-⺙⺛-⻳⼀-⿕⿰-⿻〄〒〓〠〶〷〾〿゛゜㆐㆑㆖-㆟㇀-㇣㈀-㈞㈪-㉐㉠-㉿㊊-㊰㋀-㋾㌀-㏿䷀-䷿꒐-꓆꜀-꜖꜠꜡꞉꞊꠨-꠫꠶-꠹꩷-꩹﬩﷼﷽﹢﹤-﹦﹩＄＋＜-＞＾｀｜～￠-￦￨-￮￼�]/,
             tld: /(?:xn--(?:0zwm56d|11b5bs3a9aj6g|3e0b707e|45brj9c|80akhbyknj4f|80ao21a|90a3ac|9t4b11yi5a|clchc0ea0b2g2a9gcd|deba0ad|fiqs8s|fiqz9s|fpcrj9c3d|fzc2c9e2c|g6w251d|gecrj9c|h2brj9c|hgbk6aj7f53bba|hlcj6aya9esc7a|j6w193g|jxalpdlp|kgbechtv|kprw13d|kpry57d|lgbbat1ad8j|mgb9awbf|mgbaam7a8h|mgbayh7gpa|mgbbh1a71e|mgbc0a9azcg|mgberp4a5d4ar|mgbx4cd0ab|o3cw4h|ogbpf8fl|p1ai|pgbs0dh|s9brj9c|wgbh1c|wgbl6a|xkc2al3hye2a|xkc2dl3a5ee0h|yfro4i67o|ygbi2ammx|zckzah)|சிங்கப்பூர்|испытание|السعودية|பரிட்சை|இந்தியா|परीक्षा|الجزائر|آزمایشی|இலங்கை|مليسيا|فلسطين|امارات|المغرب|الاردن|إختبار|δοκιμή|travel|museum|భారత్|سورية|بھارت|ලංකා|ભારત|ਭਾਰਤ|ভারত|भारत|عمان|تونس|טעסט|post|name|mobi|jobs|info|coop|asia|arpa|aero|테스트|新加坡|テスト|ไทย|مصر|قطر|қаз|срб|xxx|tel|pro|org|net|mil|int|gov|edu|com|cat|biz|한국|香港|測試|测试|台灣|台湾|中國|中国|рф|z[amw]|y[et]|w[fs]|v[aceginu]|u[agksyz]|t[cdfghjklmnoprtvwz]|s[abcdeghijklmnortuvxyz]|r[eosuw]|qa|p[aefghklmnrstwy]|om|n[acefgilopruz]|m[acdeghklmnopqrstuvwxyz]|l[abcikrstuvy]|k[eghimnprwyz]|j[emop]|i[delmnoqrst]|h[kmnrtu]|g[abdefghilmnpqrstuwy]|f[ijkmor]|e[cegrstu]|d[ejkmoz]|c[acdfghiklmnoruvwxyz]|b[abdefghijmnorstvwyz]|a[cdefgilmnoqrstuwxz])/i, // See /lib/tld.js
             domainPart: /[a-z0-9](?:[\-a-z0-9]*[a-z0-9])?/i,
             port: /\d{1,5}/,
@@ -53,13 +54,19 @@
         name;
 
     // Highlevel regexes composed of regex fragments
+    fragments.domainPartIdn = new RegExp(fragments.visibleChar.source + '+');
     fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
+    fragments.domainIdn = new RegExp(fragments.domainPartIdn.source + "\\." + fragments.tld.source, "i");
     fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
+    fragments.subdomainIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)*" + fragments.domainIdn.source, "i");
     fragments.subdomainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPart.source, "i");
+    fragments.subdomainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.domainPartIdn.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
     fragments.emailRelaxed = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxed.source, "i");
+    fragments.emailRelaxedIdn = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxedIdn.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxed = new RegExp("mailto:" + fragments.emailRelaxed.source, "i"); // TODO: This needs to be improved
+    fragments.mailtoUrlRelaxedIdn = new RegExp("mailto:" + fragments.emailRelaxedIdn.source, "i"); // TODO: This needs to be improved
 
     // Same as location.pathname + location.search + location.hash in the browser:
     fragments.pathnameSearchHash = new RegExp(concatRegExps(
@@ -69,7 +76,7 @@
         ")?" // See http://www.ietf.org/rfc/rfc1738.txt
     ));
 
-    function createHttpishUrlRegExp(schemeRegExp, isRelaxed) {
+    function createHttpishUrlRegExp(schemeRegExp, isRelaxed, allowIdn) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
         return new RegExp(concatRegExps(
             schemeRegExp, "://",
@@ -80,7 +87,7 @@
                 ")?@",
             ")?",
             "(?:",
-                isRelaxed ? fragments.subdomainRelaxed : fragments.subdomain,
+                isRelaxed ? (allowIdn ? fragments.subdomainRelaxedIdn : fragments.subdomainRelaxed) : (allowIdn ? fragments.subdomainIdn : fragments.subdomain),
                 "|",
                 fragments.ipv4,
             ")",
@@ -90,9 +97,13 @@
     }
 
     fragments.httpUrl = createHttpishUrlRegExp(/https?/);
+    fragments.httpUrlIdn = createHttpishUrlRegExp(/https?/, false, true);
     fragments.httpUrlRelaxed = createHttpishUrlRegExp(/https?/, true);
+    fragments.httpUrlRelaxedIdn = createHttpishUrlRegExp(/https?/, true, true);
     fragments.ftpUrl = createHttpishUrlRegExp(/ftp/);
+    fragments.ftpUrlIdn = createHttpishUrlRegExp(/ftp/, false, true);
     fragments.ftpUrlRelaxed = createHttpishUrlRegExp(/ftp/, true);
+    fragments.ftpUrlRelaxedIdn = createHttpishUrlRegExp(/ftp/, true, true);
 
     // Alias 'httpUrl' as 'url' for backwards compatibility:
     fragments.url = fragments.httpUrl;
