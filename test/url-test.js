@@ -54,18 +54,6 @@ vows
         'http://1337.net',
         'http://a.b-c.de',
         'http://www.hitta.se/karta#tool=coordinate&vkid=dWR_Xnqbbk&center=6411726:1290882&zl=9&type=map&bounds=6411510:1290540,6411943:1291224',
-/*
-        // Unicode in url?
-        'http://✪df.ws/123',
-        'http://➡.ws/䨹',
-        'http://⌘.ws',
-        'http://⌘.ws/',
-        'http://☺.damowmow.com/',
-        'http://foo.com/unicode_(✪)_in_parens',
-        'http://مثال.إختبار',
-        'http://例子.测试',
-        'http://उदाहरण.परीक्षा',
-*/
         // IP addresses for hostnames
         'http://142.42.1.1/',
         'http://142.42.1.1:8080/',
@@ -76,5 +64,18 @@ vows
         '@.foo.com/?',
         'http://1.1.256.1',
         'http://1.1.1.300'
+    ]))
+    .addBatch(createBatch('httpUrlIdn', true, [
+        'http://✪df.ws/123',
+        'http://⌘.ws',
+        'http://⌘.ws/',
+        'http://☺.damowmow.com/',
+        'http://مثال.إختبار',
+        'http://例子.测试',
+        'http://उदाहरण.परीक्षा'
+    ]))
+    .addBatch(createBatch('httpUrlIdn', false, [
+        'http://foo.com/unicode_(✪)_in_parens',
+        'http://➡.ws/䨹'
     ]))
 ['export'](module);
