@@ -60,10 +60,14 @@ vows
         'http://223.255.255.254'
     ]))
     .addBatch(createBatch('url', false, [
+        'http://localhost/',
         'http://www.foo.cq/',
         '@.foo.com/?',
         'http://1.1.256.1',
         'http://1.1.1.300'
+    ]))
+    .addBatch(createBatch('httpUrlRelaxed', true, [
+        'http://localhost/'
     ]))
     .addBatch(createBatch('httpUrlIdn', true, [
         'http://✪df.ws/123',
