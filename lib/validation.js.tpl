@@ -58,8 +58,8 @@
     fragments.domainIdn = new RegExp(fragments.domainPartIdn.source + "\\." + fragments.tld.source, "i");
     fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
     fragments.subdomainIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)*" + fragments.domainIdn.source, "i");
-    fragments.subdomainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPart.source, "i");
-    fragments.subdomainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.domainPartIdn.source, "i");
+    fragments.subdomainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domainPart.source, "i");
+    fragments.subdomainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)*" + fragments.domainPartIdn.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
     fragments.emailRelaxed = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxed.source, "i");
     fragments.emailRelaxedIdn = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxedIdn.source, "i");
