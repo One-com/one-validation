@@ -40,6 +40,7 @@
             domainPart: /[a-z0-9](?:[\-a-z0-9]*[a-z0-9])?/i,
             port: /\d{1,5}/,
             localpart: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+(?:\.[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+)*/i, // taken from: http://www.regular-expressions.info/email.html
+            localpartRelaxed: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-][\.a-z0-9!#$%&'*+\/=?\^_`{|}~\-]*/i, // taken from: http://www.regular-expressions.info/email.html
             user: /[^:@\/]+/i,
             uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i,
             lowerCaseUuid: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/,
@@ -61,8 +62,8 @@
     fragments.subdomainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domainPart.source, "i");
     fragments.subdomainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)*" + fragments.domainPartIdn.source, "i");
     fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
-    fragments.emailRelaxed = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxed.source, "i");
-    fragments.emailRelaxedIdn = new RegExp(fragments.localpart.source + "@" + fragments.subdomainRelaxedIdn.source, "i");
+    fragments.emailRelaxed = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.subdomainRelaxed.source, "i");
+    fragments.emailRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.subdomainRelaxedIdn.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxed = new RegExp("mailto:" + fragments.emailRelaxed.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxedIdn = new RegExp("mailto:" + fragments.emailRelaxedIdn.source, "i"); // TODO: This needs to be improved
