@@ -27,9 +27,17 @@ vows
         'foo@bar.dk'
     ]))
     .addBatch(createBatch('email', false, [
-        'foo.@bar.dk'
+        'foo.@bar.dk',
+        'foo@bar',
+        'foo@dk',
+        'foo@bar.nosuchtld'
     ]))
     .addBatch(createBatch('emailRelaxed', true, [
-        'foo.@bar.dk'
+        'foo.@bar.dk',
+        'foo@bar.nosuchtld'
+    ]))
+    .addBatch(createBatch('emailRelaxed', false, [
+        'foo@bar',
+        'foo@dk'
     ]))
 ['export'](module);

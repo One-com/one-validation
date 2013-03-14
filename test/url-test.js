@@ -66,7 +66,7 @@ vows
         'http://1.1.256.1',
         'http://1.1.1.300'
     ]))
-    .addBatch(createBatch('httpUrlRelaxed', true, [
+    .addBatch(createBatch('httpUrlRelaxed', false, [
         'http://localhost/'
     ]))
     .addBatch(createBatch('httpUrlIdn', true, [

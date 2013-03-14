@@ -55,15 +55,14 @@
 
     // Highlevel regexes composed of regex fragments
     fragments.domainPartIdn = new RegExp(fragments.visibleChar.source + '+');
-    fragments.domain = new RegExp(fragments.domainPart.source + "\\." + fragments.tld.source, "i");
-    fragments.domainIdn = new RegExp(fragments.domainPartIdn.source + "\\." + fragments.tld.source, "i");
-    fragments.subdomain = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domain.source, "i");
-    fragments.subdomainIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)*" + fragments.domainIdn.source, "i");
-    fragments.subdomainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)*" + fragments.domainPart.source, "i");
-    fragments.subdomainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)*" + fragments.domainPartIdn.source, "i");
-    fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.subdomain.source, "i");
-    fragments.emailRelaxed = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.subdomainRelaxed.source, "i");
-    fragments.emailRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.subdomainRelaxedIdn.source, "i");
+    fragments.domain = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.tld.source, "i");
+    fragments.domainIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.tld.source, "i");
+    fragments.domainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPart.source, "i");
+    fragments.domainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.domainPartIdn.source, "i");
+
+    fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.domain.source, "i");
+    fragments.emailRelaxed = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainRelaxed.source, "i");
+    fragments.emailRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainRelaxedIdn.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxed = new RegExp("mailto:" + fragments.emailRelaxed.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxedIdn = new RegExp("mailto:" + fragments.emailRelaxedIdn.source, "i"); // TODO: This needs to be improved
@@ -87,7 +86,7 @@
                 ")?@",
             ")?",
             "(?:",
-                isRelaxed ? (allowIdn ? fragments.subdomainRelaxedIdn : fragments.subdomainRelaxed) : (allowIdn ? fragments.subdomainIdn : fragments.subdomain),
+                isRelaxed ? (allowIdn ? fragments.domainRelaxedIdn : fragments.domainRelaxed) : (allowIdn ? fragments.domainIdn : fragments.domain),
                 "|",
                 fragments.ipv4,
             ")",
