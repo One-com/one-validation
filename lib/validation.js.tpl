@@ -79,7 +79,7 @@
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
         options = options || {};
         return new RegExp(concatRegExps(
-            (options.scheme || 'http'), "://",
+            (options.scheme || 'https?'), "://",
             "(?:",
                 fragments.user,
                 "(?::",
