@@ -87,6 +87,7 @@
                 ")?@",
             ")?",
             "(?:",
+                (options.localhost ? 'localhost|' : ''),
                 options.relaxed ? (options.idn ? fragments.domainRelaxedIdn : fragments.domainRelaxed) : (options.idn ? fragments.domainIdn : fragments.domain),
                 "|",
                 fragments.ipv4,
