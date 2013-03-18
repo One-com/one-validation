@@ -76,10 +76,11 @@
         ")?" // See http://www.ietf.org/rfc/rfc1738.txt
     ));
 
-    function createHttpishUrlRegExp(schemeRegExp, isRelaxed, allowIdn) {
+    function createHttpishUrlRegExp(options) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
+        options = options || {};
         return new RegExp(concatRegExps(
-            schemeRegExp, "://",
+            (options.scheme || 'http'), "://",
             "(?:",
                 fragments.user,
                 "(?::",
@@ -87,7 +88,8 @@
                 ")?@",
             ")?",
             "(?:",
-                isRelaxed ? (allowIdn ? fragments.domainRelaxedIdn : fragments.domainRelaxed) : (allowIdn ? fragments.domainIdn : fragments.domain),
+                (options.localhost ? 'localhost|' : ''),
+                options.relaxed ? (options.idn ? fragments.domainRelaxedIdn : fragments.domainRelaxed) : (options.idn ? fragments.domainIdn : fragments.domain),
                 "|",
                 fragments.ipv4,
             ")",
@@ -96,14 +98,14 @@
         ), "i");
     }
 
-    fragments.httpUrl = createHttpishUrlRegExp(/https?/);
-    fragments.httpUrlIdn = createHttpishUrlRegExp(/https?/, false, true);
-    fragments.httpUrlRelaxed = createHttpishUrlRegExp(/https?/, true);
-    fragments.httpUrlRelaxedIdn = createHttpishUrlRegExp(/https?/, true, true);
-    fragments.ftpUrl = createHttpishUrlRegExp(/ftp/);
-    fragments.ftpUrlIdn = createHttpishUrlRegExp(/ftp/, false, true);
-    fragments.ftpUrlRelaxed = createHttpishUrlRegExp(/ftp/, true);
-    fragments.ftpUrlRelaxedIdn = createHttpishUrlRegExp(/ftp/, true, true);
+    fragments.httpUrl = createHttpishUrlRegExp({scheme: /https?/});
+    fragments.httpUrlIdn = createHttpishUrlRegExp({scheme: /https?/, idn: true});
+    fragments.httpUrlRelaxed = createHttpishUrlRegExp({scheme: /https?/, relaxed: true});
+    fragments.httpUrlRelaxedIdn = createHttpishUrlRegExp({scheme: /https?/, relaxed: true, idn: true});
+    fragments.ftpUrl = createHttpishUrlRegExp({scheme: /ftp/});
+    fragments.ftpUrlIdn = createHttpishUrlRegExp({scheme: /ftp/, idn: true});
+    fragments.ftpUrlRelaxed = createHttpishUrlRegExp({scheme: /ftp/, relaxed: true});
+    fragments.ftpUrlRelaxedIdn = createHttpishUrlRegExp({scheme: /ftp/, relaxed: true, idn: true});
 
     // Alias 'httpUrl' as 'url' for backwards compatibility:
     fragments.url = fragments.httpUrl;
@@ -122,6 +124,8 @@
 
     // Expose regex fragments for matching inside larger texts
     validation.fragments = fragments;
+
+    validation.createHttpishUrlRegExp = createHttpishUrlRegExp;
 
     return validation;
 }));
