@@ -124,5 +124,7 @@
     // Expose regex fragments for matching inside larger texts
     validation.fragments = fragments;
 
+    validation.createHttpishUrlRegExp = createHttpishUrlRegExp;
+
     return validation;
 }));
