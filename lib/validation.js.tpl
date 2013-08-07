@@ -109,10 +109,24 @@
     // Alias 'httpUrl' as 'url' for backwards compatibility:
     fragments.url = fragments.httpUrl;
 
+    function getFlagsStringFromRegExp(regExp) {
+        var flagsString = '';
+        if (regExp.ignoreCase) {
+            flagsString += 'i';
+        }
+        if (regExp.global) {
+            flagsString += 'g';
+        }
+        if (regExp.multiline) {
+            flagsString += 'm';
+        }
+        return flagsString;
+    }
+
     // Add convenience regexes and functions
     for (name in fragments) {
         if (fragments.hasOwnProperty(name)) {
-            validation[name] = new RegExp("^" + fragments[name].source + "$", "i");
+            validation[name] = new RegExp("^" + fragments[name].source + "$", getFlagsStringFromRegExp(fragments[name]));
             validation.functions[name] = (function (name) {
                 return function (value) {
                     return validation[name].test(value);
