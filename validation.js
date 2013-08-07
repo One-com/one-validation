@@ -55,15 +55,15 @@
         name;
 
     // Highlevel regexes composed of regex fragments
-    fragments.domainPartIdn = new RegExp(fragments.visibleChar.source + '+');
-    fragments.domain = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.tld.source, "i");
-    fragments.domainIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.tld.source, "i");
-    fragments.domainRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPart.source, "i");
-    fragments.domainRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.domainPartIdn.source, "i");
+    fragments.domainPartIdn = fragments.domainNamePartIdn = new RegExp(fragments.visibleChar.source + '+');
+    fragments.domain = fragments.domainName = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.tld.source, "i");
+    fragments.domainIdn = fragments.domainNameIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.tld.source, "i");
+    fragments.domainRelaxed = fragments.domainNameRelaxed = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPart.source, "i");
+    fragments.domainRelaxedIdn = fragments.domainNameRelaxedIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.domainPartIdn.source, "i");
 
-    fragments.email = new RegExp(fragments.localpart.source + "@" + fragments.domain.source, "i");
-    fragments.emailRelaxed = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainRelaxed.source, "i");
-    fragments.emailRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainRelaxedIdn.source, "i");
+    fragments.email = fragments.emailAddress = new RegExp(fragments.localpart.source + "@" + fragments.domain.source, "i");
+    fragments.emailRelaxed = fragments.emailAddressRelaxed =new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainRelaxed.source, "i");
+    fragments.emailRelaxedIdn = fragments.emailAddressRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainRelaxedIdn.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxed = new RegExp("mailto:" + fragments.emailRelaxed.source, "i"); // TODO: This needs to be improved
     fragments.mailtoUrlRelaxedIdn = new RegExp("mailto:" + fragments.emailRelaxedIdn.source, "i"); // TODO: This needs to be improved
@@ -110,10 +110,24 @@
     // Alias 'httpUrl' as 'url' for backwards compatibility:
     fragments.url = fragments.httpUrl;
 
+    function getFlagsStringFromRegExp(regExp) {
+        var flagsString = '';
+        if (regExp.ignoreCase) {
+            flagsString += 'i';
+        }
+        if (regExp.global) {
+            flagsString += 'g';
+        }
+        if (regExp.multiline) {
+            flagsString += 'm';
+        }
+        return flagsString;
+    }
+
     // Add convenience regexes and functions
     for (name in fragments) {
         if (fragments.hasOwnProperty(name)) {
-            validation[name] = new RegExp("^" + fragments[name].source + "$", "i");
+            validation[name] = new RegExp("^" + fragments[name].source + "$", getFlagsStringFromRegExp(fragments[name]));
             validation.functions[name] = (function (name) {
                 return function (value) {
                     return validation[name].test(value);
