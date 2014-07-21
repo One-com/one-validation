@@ -1,5 +1,5 @@
-one-validation
-==============
+# one-validation
+
 This is a collection of regular expressions for general validation purposes.
 The basic design concept is to split up the regexes into semantic parts of the pattern to match.
 As an example a url consists of many parts like scheme, optional userinfo, subdomain, domain, toplevel domain, path, query and fragment.
@@ -13,15 +13,15 @@ Package managers:
 * npm: `npm install one-validation`
 * bower: `bower install validation`
 
-Supported patterns
-==================
+## Supported patterns
+
 * domain
 * subdomain
 * email
 * url
 
-Building
-========
+## Building
+
 ```
 npm install
 make
