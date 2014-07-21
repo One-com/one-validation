@@ -25,35 +25,23 @@ vows
     .describe('email validation')
     .addBatch(createBatch('email', true, [
         'foo@bar.dk',
-        'foo@bar.somenewtld'
+        'foo@bar.somenewtld',
+        'foo.@bar.dk'
     ]))
     .addBatch(createBatch('email', false, [
-        'foo.@bar.dk',
         'foo@bar',
-        'foo@dk'
-    ]))
-    .addBatch(createBatch('emailIdn', true, [
+        'foo@dk',
         'foo@例子.测试',
         'foo@उदाहरण.परीक्षा'
     ]))
-    .addBatch(createBatch('emailIdn', false, [
+    .addBatch(createBatch('emailIdn', true, [
+        'foo@bar.dk',
+        'foo@bar.somenewtld',
         'foo.@bar.dk',
-        'foo@bar',
-        'foo.@उदाहरण.परीक्षा',
-        'foo@dk'
-    ]))
-    .addBatch(createBatch('emailRelaxed', true, [
-        'foo.@bar.dk'
-    ]))
-    .addBatch(createBatch('emailRelaxed', false, [
-        'foo@bar',
-        'foo@dk'
-    ]))
-    .addBatch(createBatch('emailRelaxedIdn', true, [
-        'foo.@bar.dk',
+        'foo@例子.测试',
         'foo.@उदाहरण.परीक्षा'
     ]))
-    .addBatch(createBatch('emailRelaxedIdn', false, [
+    .addBatch(createBatch('emailIdn', false, [
         'foo@bar',
         'foo@dk'
     ]))
