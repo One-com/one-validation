@@ -110,15 +110,8 @@
 
     fragments.httpUrl = createHttpishUrlRegExp({scheme: /https?/});
     fragments.httpUrlIdn = createHttpishUrlRegExp({scheme: /https?/, idn: true});
-    fragments.httpUrlRelaxed = fragments.httpUrl;
-    fragments.httpUrlRelaxedIdn = fragments.httpUrlIdn;
     fragments.ftpUrl = createHttpishUrlRegExp({scheme: /ftp/});
     fragments.ftpUrlIdn = createHttpishUrlRegExp({scheme: /ftp/, idn: true});
-    fragments.ftpUrlRelaxed = fragments.ftpUrl;
-    fragments.ftpUrlRelaxedIdn = fragments.ftpUrlIdn;
-
-    // Alias 'httpUrl' as 'url' for backwards compatibility:
-    fragments.url = fragments.httpUrl;
 
     function getFlagsStringFromRegExp(regExp) {
         var flagsString = '';
