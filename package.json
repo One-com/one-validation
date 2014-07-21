@@ -27,7 +27,8 @@
   },
   "scripts": {
     "test": "mocha",
-    "prepublish": "make && npm test"
+    "prepublish": "make && npm test",
+    "travis": "npm test"
   },
   "publishConfig": {
     "repository": "http://registry.npmjs.org/"
