@@ -86,4 +86,9 @@ vows
         'http://1.1.256.1',
         'http://1.1.1.300'
     ]))
+    .addBatch(createBatch('domainIdn', false, [
+        'foo:bar.com',
+        'foo/bar.com',
+        'foo%bar.com'
+    ]))
 ['export'](module);
