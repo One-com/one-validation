@@ -39,8 +39,7 @@
             domainPart: /[a-z0-9](?:[\-a-z0-9]*[a-z0-9])?/i,
             domainPartNonNumerical: /[a-z](?:[\-a-z]*[a-z])?/i,
             port: /\d{1,5}/,
-            localpart: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-:]+(?:\.[a-z0-9!#$%&'*+\/=?\^_`{|}~\-]+)*/i, // taken from: http://www.regular-expressions.info/email.html
-            localpartRelaxed: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-:][\.a-z0-9!#$%&'*+\/=?\^_`{|}~\-]*/i, // taken from: http://www.regular-expressions.info/email.html
+            localpart: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-:][\.a-z0-9!#$%&'*+\/=?\^_`{|}~\-]*/i, // taken from: http://www.regular-expressions.info/email.html
             user: /[^:@\/]+/i,
             uuid: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i,
             lowerCaseUuid: /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/,
@@ -72,11 +71,8 @@
 
     fragments.email = fragments.emailAddress = new RegExp(fragments.localpart.source + "@" + fragments.domain.source, "i");
     fragments.emailIdn = fragments.emailAddressIdn = new RegExp(fragments.localpart.source + "@" + fragments.domainIdn.source, "i");
-    fragments.emailRelaxed = fragments.emailAddressRelaxed = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domain.source, "i");
-    fragments.emailRelaxedIdn = fragments.emailAddressRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainIdn.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
-    fragments.mailtoUrlRelaxed = new RegExp("mailto:" + fragments.emailRelaxed.source, "i"); // TODO: This needs to be improved
-    fragments.mailtoUrlRelaxedIdn = new RegExp("mailto:" + fragments.emailRelaxedIdn.source, "i"); // TODO: This needs to be improved
+    fragments.mailtoUrlIdn = new RegExp("mailto:" + fragments.emailIdn.source, "i"); // TODO: This needs to be improved
 
     // Same as location.pathname + location.search + location.hash in the browser:
     fragments.pathnameSearchHash = new RegExp(concatRegExps(
