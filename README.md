@@ -16,7 +16,6 @@ Package managers:
 ## Supported patterns
 
 * domain
-* subdomain
 * email
 * url
 
