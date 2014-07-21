@@ -60,7 +60,10 @@ vows
         'http://223.255.255.254',
         // New TLDs
         'http://www.foo.cq/',
-        'http://www.foo.randomtld/'
+        'http://www.foo.randomtld/',
+        // SLDs
+        'http://foo.co.uk',
+        'http://foo.org.uk'
     ]))
     .addBatch(createBatch('httpUrl', false, [
         'http://localhost/',
