@@ -20,6 +20,32 @@ Package managers:
 * email
 * url
 
+## Examples
+
+### domain and domainIdn
+
+```
+validation.domain.test('foo.co.uk');
+return true;
+```
+
+```
+validation.domainIdn.test('hällo-test.de');
+return true;
+```
+
+### email and emailIdn
+
+```
+validation.email.test('test@foo.co.uk');
+return true;
+```
+
+```
+validation.domainIdn.test('test@hällo-test.de');
+return true;
+```
+
 ## Building
 
 ```
