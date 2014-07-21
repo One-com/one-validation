@@ -57,11 +57,13 @@ vows
         // IP addresses for hostnames
         'http://142.42.1.1/',
         'http://142.42.1.1:8080/',
-        'http://223.255.255.254'
+        'http://223.255.255.254',
+        // New TLDs
+        'http://www.foo.cq/',
+        'http://www.foo.randomtld/'
     ]))
     .addBatch(createBatch('httpUrl', false, [
         'http://localhost/',
-        'http://www.foo.cq/',
         '@.foo.com/?',
         'http://1.1.256.1',
         'http://1.1.1.300'
@@ -77,6 +79,8 @@ vows
     ]))
     .addBatch(createBatch('httpUrlIdn', false, [
         'http://foo.com/unicode_(✪)_in_parens',
-        'http://➡.ws/䨹'
+        'http://➡.ws/䨹',
+        'http://1.1.256.1',
+        'http://1.1.1.300'
     ]))
 ['export'](module);
