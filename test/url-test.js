@@ -66,9 +66,6 @@ vows
         'http://1.1.256.1',
         'http://1.1.1.300'
     ]))
-    .addBatch(createBatch('httpUrlRelaxed', false, [
-        'http://localhost/'
-    ]))
     .addBatch(createBatch('httpUrlIdn', true, [
         'http://✪df.ws/123',
         'http://⌘.ws',
