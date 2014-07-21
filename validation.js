@@ -73,6 +73,7 @@
     fragments.domainRelaxedIdn = fragments.domainNameRelaxedIdn = fragments.domainIdn;
 
     fragments.email = fragments.emailAddress = new RegExp(fragments.localpart.source + "@" + fragments.domain.source, "i");
+    fragments.emailIdn = fragments.emailAddressIdn = new RegExp(fragments.localpart.source + "@" + fragments.domainIdn.source, "i");
     fragments.emailRelaxed = fragments.emailAddressRelaxed = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domain.source, "i");
     fragments.emailRelaxedIdn = fragments.emailAddressRelaxedIdn = new RegExp(fragments.localpartRelaxed.source + "@" + fragments.domainIdn.source, "i");
     fragments.mailtoUrl = new RegExp("mailto:" + fragments.email.source, "i"); // TODO: This needs to be improved
