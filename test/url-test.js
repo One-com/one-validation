@@ -24,7 +24,7 @@ function createBatch(name, shouldMatch, strings) {
 
 vows
     .describe('url validation')
-    .addBatch(createBatch('url', true, [
+    .addBatch(createBatch('httpUrl', true, [
         'http://www.foo.com/',
         'http://www.foo.com/~username/',
         'http://www.foo.com/?',
@@ -59,7 +59,7 @@ vows
         'http://142.42.1.1:8080/',
         'http://223.255.255.254'
     ]))
-    .addBatch(createBatch('url', false, [
+    .addBatch(createBatch('httpUrl', false, [
         'http://localhost/',
         'http://www.foo.cq/',
         '@.foo.com/?',
