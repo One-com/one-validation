@@ -24,19 +24,24 @@ function createBatch(name, shouldMatch, strings) {
 vows
     .describe('email validation')
     .addBatch(createBatch('email', true, [
-        'foo@bar.dk'
+        'foo@bar.dk',
+        'foo@bar.somenewtld',
+        'foo.@bar.dk'
     ]))
     .addBatch(createBatch('email', false, [
-        'foo.@bar.dk',
         'foo@bar',
         'foo@dk',
-        'foo@bar.nosuchtld'
+        'foo@例子.测试',
+        'foo@उदाहरण.परीक्षा'
     ]))
-    .addBatch(createBatch('emailRelaxed', true, [
+    .addBatch(createBatch('emailIdn', true, [
+        'foo@bar.dk',
+        'foo@bar.somenewtld',
         'foo.@bar.dk',
-        'foo@bar.nosuchtld'
+        'foo@例子.测试',
+        'foo.@उदाहरण.परीक्षा'
     ]))
-    .addBatch(createBatch('emailRelaxed', false, [
+    .addBatch(createBatch('emailIdn', false, [
         'foo@bar',
         'foo@dk'
     ]))

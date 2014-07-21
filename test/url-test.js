@@ -24,7 +24,7 @@ function createBatch(name, shouldMatch, strings) {
 
 vows
     .describe('url validation')
-    .addBatch(createBatch('url', true, [
+    .addBatch(createBatch('httpUrl', true, [
         'http://www.foo.com/',
         'http://www.foo.com/~username/',
         'http://www.foo.com/?',
@@ -57,17 +57,19 @@ vows
         // IP addresses for hostnames
         'http://142.42.1.1/',
         'http://142.42.1.1:8080/',
-        'http://223.255.255.254'
-    ]))
-    .addBatch(createBatch('url', false, [
-        'http://localhost/',
+        'http://223.255.255.254',
+        // New TLDs
         'http://www.foo.cq/',
+        'http://www.foo.randomtld/',
+        // SLDs
+        'http://foo.co.uk',
+        'http://foo.org.uk'
+    ]))
+    .addBatch(createBatch('httpUrl', false, [
+        'http://localhost/',
         '@.foo.com/?',
         'http://1.1.256.1',
         'http://1.1.1.300'
-    ]))
-    .addBatch(createBatch('httpUrlRelaxed', false, [
-        'http://localhost/'
     ]))
     .addBatch(createBatch('httpUrlIdn', true, [
         'http://✪df.ws/123',
@@ -80,6 +82,13 @@ vows
     ]))
     .addBatch(createBatch('httpUrlIdn', false, [
         'http://foo.com/unicode_(✪)_in_parens',
-        'http://➡.ws/䨹'
+        'http://➡.ws/䨹',
+        'http://1.1.256.1',
+        'http://1.1.1.300'
+    ]))
+    .addBatch(createBatch('domainIdn', false, [
+        'foo:bar.com',
+        'foo/bar.com',
+        'foo%bar.com'
     ]))
 ['export'](module);
