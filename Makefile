@@ -2,7 +2,7 @@
 
 all: validation.min.js
 
-validation.min.js:
+validation.min.js: validation.js
 	./node_modules/.bin/uglifyjs -nc $< > $@
 
 clean:
