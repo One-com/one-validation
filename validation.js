@@ -69,8 +69,6 @@
 
     fragments.domain = fragments.domainName = new RegExp("(?:" + fragments.domainPart.source + "\\.)+" + fragments.domainPartNonNumerical.source, "i");
     fragments.domainIdn = fragments.domainNameIdn = new RegExp("(?:" + fragments.domainPartIdn.source + "\\.)+" + fragments.domainPartNonNumericalIdn.source, "i");
-    fragments.domainRelaxed = fragments.domainNameRelaxed = fragments.domain;
-    fragments.domainRelaxedIdn = fragments.domainNameRelaxedIdn = fragments.domainIdn;
 
     fragments.email = fragments.emailAddress = new RegExp(fragments.localpart.source + "@" + fragments.domain.source, "i");
     fragments.emailIdn = fragments.emailAddressIdn = new RegExp(fragments.localpart.source + "@" + fragments.domainIdn.source, "i");
