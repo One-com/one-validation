@@ -1,5 +1,9 @@
 # one-validation
 
+[![NPM version](https://badge.fury.io/js/one-validation.png)](http://badge.fury.io/js/one-validation)
+[![Build Status](https://travis-ci.org/One-com/one-validation.png?branch=master)](https://travis-ci.org/One-com/one-validation)
+[![Dependency Status](https://david-dm.org/One-com/one-validation.png)](https://david-dm.org/One-com/one-validation)
+
 This is a collection of regular expressions for general validation purposes.
 The basic design concept is to split up the regexes into semantic parts of the pattern to match.
 As an example a url consists of many parts like scheme, optional userinfo, subdomain, domain, toplevel domain, path, query and fragment.
