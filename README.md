@@ -2,6 +2,7 @@
 
 [![NPM version](https://badge.fury.io/js/one-validation.png)](http://badge.fury.io/js/one-validation)
 [![Build Status](https://travis-ci.org/One-com/one-validation.png?branch=master)](https://travis-ci.org/One-com/one-validation)
+[![Coverage Status](https://coveralls.io/repos/One-com/one-validation/badge.png)](https://coveralls.io/r/One-com/one-validation)
 [![Dependency Status](https://david-dm.org/One-com/one-validation.png)](https://david-dm.org/One-com/one-validation)
 
 This is a collection of regular expressions for general validation purposes.

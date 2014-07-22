@@ -1,3 +1,4 @@
+/*global beforeEach, describe, it*/
 var unexpected = require('unexpected'),
     oneValidation = require('../validation');
 
