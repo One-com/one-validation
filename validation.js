@@ -64,6 +64,8 @@
                                                        new RegExp(alphabeticalPlusVisibleNonAsciiChars.source.replace(/^\[/, '[\\-') + '*'),
                                                        alphabeticalPlusVisibleNonAsciiChars));
 
+    // TODO: Consider disallowing invalid IDN domains, e.g. one-letter TLD "foo.æ" which has an ASCII representation of "foo.xn--6ca"
+
     fragments.domain = fragments.domainName = new RegExp('(?:' + fragments.domainPart.source + '\\.)+' + fragments.tld.source, 'i');
     fragments.domainIdn = fragments.domainNameIdn = new RegExp('(?:' + fragments.domainPartIdn.source + '\\.)+' + fragments.tldIdn.source, 'i');
 
