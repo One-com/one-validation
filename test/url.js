@@ -99,4 +99,20 @@ describe('url validation', function () {
             expect('foo%bar.com', 'not to pass');
         });
     });
+
+    describe('#rootRelativeUrl', function () {
+        beforeEach(function () {
+            regExp = oneValidation.rootRelativeUrl;
+        });
+
+        it('should accept valid input', function () {
+            expect('/', 'to pass');
+            expect('/foo.bar', 'to pass');
+            expect('/foo.bar/baz.quux?foo=bar&quux=zoo#pronk', 'to pass');
+        });
+
+        it('should reject invalid input', function () {
+            expect('', 'not to pass');
+        });
+    });
 });

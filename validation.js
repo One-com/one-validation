@@ -85,7 +85,7 @@
     ));
 
     // Root-relative URL. Same as pathnameSearchHash, except it can't be empty
-    fragments.rootRelativeUrl = new RegExp(fragments.pathnameSearchHash.replace(/\?\$$/, '$'))
+    fragments.rootRelativeUrl = new RegExp(fragments.pathnameSearchHash.source.replace(/\?$/, ''));
 
     function createHttpishUrlRegExp(options) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
