@@ -77,15 +77,21 @@
     fragments.mailtoUrlIdn = new RegExp('mailto:' + fragments.emailIdn.source, 'i'); // TODO: This needs to be improved
 
     // Same as location.pathname + location.search + location.hash in the browser:
+    fragments.searchHash = new RegExp(concatRegExps(
+        '(?:\\?', fragments.search, ')?',
+        '(?:#', fragments.hash, ')?'
+    ));
     fragments.pathnameSearchHash = new RegExp(concatRegExps(
-        '(?:/', fragments.pathname,
-            '(?:\\?', fragments.search, ')?',
-            '(?:#', fragments.hash, ')?',
+        '(?:', fragments.pathname,
+            fragments.searchHash,
         ')?' // See http://www.ietf.org/rfc/rfc1738.txt
     ));
 
     // Root-relative URL. Same as pathnameSearchHash, except it can't be empty
-    fragments.rootRelativeUrl = new RegExp(fragments.pathnameSearchHash.source.replace(/\?$/, ''));
+    fragments.rootRelativeUrl = new RegExp(concatRegExps(
+        '/',
+        new RegExp(fragments.pathnameSearchHash.source.replace(/\?$/, '')
+    )));
 
     function createHttpishUrlRegExp(options) {
         // [protocol"://"[username[":"password]"@"]hostname[":"port]"/"?][path]["?"querystring]["#"fragment]
@@ -105,7 +111,7 @@
                 fragments.ipv4,
             ')',
             '(?::', fragments.port, ')?',
-            fragments.pathnameSearchHash
+            '(?:/', fragments.pathnameSearchHash, '|', fragments.searchHash, ')'
         ), 'i');
     }
 

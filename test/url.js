@@ -15,6 +15,9 @@ describe('url validation', function () {
 
         it('should accept valid input', function () {
             expect('http://www.foo.com/', 'to pass');
+            expect('http://www.foo.com?query=simple', 'to pass');
+            expect('http://www.foo.com?query=where&is=theTruth', 'to pass');
+            expect('http://www.foo.com?query=where&is=theTruth#in=the&world=true', 'to pass');
             expect('http://www.foo.com/~username/', 'to pass');
             expect('http://www.foo.com/?', 'to pass');
             expect('http://www.foo.com/?#', 'to pass');
