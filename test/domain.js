@@ -27,7 +27,7 @@ describe('domain validation', function () {
 
         it('should disallow underscore in domain with valid subdomain', function () {
             expect('_sub._example.com', 'not to pass');
-        })
+        });
 
         it('should allow underscore at start of subdomain', function () {
             expect('_sub.example.com', 'to pass');
@@ -43,7 +43,7 @@ describe('domain validation', function () {
 
         it('should allow underscore in multiple subdomains', function () {
             expect('_sub1.sub_2.sub3_.example.com', 'to pass');
-        })
+        });
     });
 
     describe('#domainIdn', function () {
