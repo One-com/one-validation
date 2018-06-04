@@ -20,6 +20,30 @@ describe('domain validation', function () {
         it('should disallow a single char tld', function () {
             expect('bar.a', 'not to pass');
         });
+
+        it('should disallow underscore in domain with no subdomain', function () {
+            expect('_example.com', 'not to pass');
+        });
+
+        it('should disallow underscore in domain with valid subdomain', function () {
+            expect('_sub._example.com', 'not to pass');
+        });
+
+        it('should allow underscore at start of subdomain', function () {
+            expect('_sub.example.com', 'to pass');
+        });
+
+        it('should allow underscore in middle of subdomain', function () {
+            expect('sub_domain.example.com', 'to pass');
+        });
+
+        it('should allow underscore in end of subdomain', function () {
+            expect('sub_.example.com', 'to pass');
+        });
+
+        it('should allow underscore in multiple subdomains', function () {
+            expect('_sub1.sub_2.sub3_.example.com', 'to pass');
+        });
     });
 
     describe('#domainIdn', function () {
