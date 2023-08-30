@@ -44,6 +44,18 @@ describe('domain validation', function () {
         it('should allow underscore in multiple subdomains', function () {
             expect('_sub1.sub_2.sub3_.example.com', 'to pass');
         });
+
+        it('should allow a punycode tld', function () {
+            expect('bar.xn--fjq720a', 'to pass');
+        });
+
+        it('should disallow an invalid tld', function () {
+            expect('bar.c7a', 'not to pass');
+        });
+
+        it('should disallow an invalid punycode tld', function () {
+            expect('bar.xn--6ca', 'not to pass');
+        });
     });
 
     describe('#domainIdn', function () {
