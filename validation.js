@@ -40,6 +40,7 @@
             visibleAsciiChar: /[\x20-\x7e]*/,
             subDomainPart: /[_a-z0-9](?:[_\-a-z0-9]*[_a-z0-9])?/i,
             domainPart: /[a-z0-9](?:[\-a-z0-9]*[a-z0-9])?/i,
+            punycodeTld: /xn\-\-[a-z0-9]{4,}/i,
             tld: /[a-z][\-a-z]*[a-z]/i,
             port: /\d{1,5}/,
             localpart: /[a-z0-9!#$%&'*+\/=?\^_`{|}~\-:][\.a-z0-9!#$%&'*+\/=?\^_`{|}~\-]*/i, // taken from: http://www.regular-expressions.info/email.html
@@ -69,7 +70,8 @@
 
     // TODO: Consider disallowing invalid IDN domains, e.g. one-letter TLD "foo.æ" which has an ASCII representation of "foo.xn--6ca"
 
-    fragments.domain = fragments.domainName = new RegExp('(?:' + fragments.subDomainPart.source + '\\.)*' + '(?:' + fragments.domainPart.source + '\\.)+' + fragments.tld.source, 'i');
+    // punycodetld source should come first than the normal tld because its a subset of normal tld.
+    fragments.domain = fragments.domainName = new RegExp('(?:' + fragments.subDomainPart.source + '\\.)*' + '(?:' + fragments.domainPart.source + '\\.)+' + '(?:' + '(?:' + fragments.punycodeTld.source + ')' + '|(?:' + fragments.tld.source + '))', 'i');
     fragments.domainIdn = fragments.domainNameIdn = new RegExp('(?:' + fragments.domainPartIdn.source + '\\.)+' + fragments.tldIdn.source, 'i');
 
     fragments.email = fragments.emailAddress = new RegExp(fragments.localpart.source + '@' + fragments.domain.source, 'i');
